@@ -1,9 +1,10 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function Client({client,onClick, onDelete}) {
     const  {id,name, email, phone_number, address} = client
-    const path = `/clients/${client.id}/invoicers/new`
+    const path = `/clients/${id}/invoicers/new`
+    const pathDe = `/clients/${id}`
+
     function handleDelete() {
         fetch(`/clients/${id}`, {
           method: "DELETE",
@@ -13,6 +14,7 @@ function Client({client,onClick, onDelete}) {
 
     return (
         <tr>
+            {/* <td>{id}</td> */}
             <td>{name}</td>
             <td>{email}</td>
             <td>{phone_number}</td>
@@ -23,6 +25,8 @@ function Client({client,onClick, onDelete}) {
                 <button onClick={handleDelete}>Delete</button>
                 |
                 <Link to={path}><button>New Invoice</button></Link>
+                |
+                <Link to={pathDe}><button>Details</button></Link>
             </td>
         </tr>
     )

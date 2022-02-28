@@ -1,5 +1,7 @@
 import { Link, useParams, useNavigate } from 'react-router-dom'
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import { PDFExport } from "@progress/kendo-react-pdf";
+
 
 function DetailsInv({invoice, setInvoice, currentUser, onDeleteInvoice}) {
     const {client, due_date, desc, price, tax_total, total, status, created_at} = invoice
@@ -10,8 +12,8 @@ function DetailsInv({invoice, setInvoice, currentUser, onDeleteInvoice}) {
     useEffect(()=>{
         fetch(`/invoicers/${id}`)
         .then((r)=>r.json())
-        .then((invoice)=>{
-            setInvoice(invoice);
+        .then((inv)=>{
+            setInvoice(inv);
         })
     },[id])
 
@@ -20,12 +22,25 @@ function DetailsInv({invoice, setInvoice, currentUser, onDeleteInvoice}) {
           method: "DELETE",
         })
         onDeleteInvoice(id)
-        navigate("/invoicers")
+        navigate(`/clients/${id}`)
     }
 
     console.log(invoice)
     
+    const pdfExportComponent = useRef(null);
+    const handleExportWithComponent = (event) => {
+        pdfExportComponent.current.save();
+    };
+
     return (
+        <>
+        <div>
+            <button onClick={handleExportWithComponent}> Export as PDF</button>
+            <button onClick={() => window.print()}>Print</button>
+            <button onClick={handleDelete}>Delete</button>
+            <Link to={path}><button>go back</button></Link>
+        </div>
+        <PDFExport ref={pdfExportComponent} paperSize="A4">
         <div>
             {/* should be actual look of invoice */}
             <p>Company: {currentUser.company}</p>
@@ -38,9 +53,10 @@ function DetailsInv({invoice, setInvoice, currentUser, onDeleteInvoice}) {
             <p>{tax_total}</p>
             <p>{total}</p>
             <p>{status}</p>
-            <button onClick={handleDelete}>Delete</button>
-            <Link to={path}><button>go back</button></Link>
         </div>
+        </PDFExport>
+        
+        </>
     )
 }
 

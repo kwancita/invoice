@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :seriallizers
  
   resources :invoicers
   resources :users, only:[:update]

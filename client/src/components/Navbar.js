@@ -14,11 +14,8 @@ function Navbar({setCurrentUser}) {
     return (
         <nav>
             <div>
-                <Link to="/home">Toddler Dev</Link>
-                <Link to="/home">Home</Link>
-                <Link to="/clients">Clients</Link>
-                <Link to="/invoicers">Invoices</Link>
-                <Link to="/me">User</Link>
+                <Link to="/clients">logoWord </Link>
+                <Link to="/me">UserLOGO </Link>
                 <Link to="/" onClick={handleLogout}>Logout</Link>
             </div>
         </nav>

@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom"
 
 function EditRow({ client, onEdit }) {
+  const navigate = useNavigate();
   const [editData, setEditData] = useState({
     name: client.name,
     email: client.email,
@@ -19,6 +21,34 @@ function EditRow({ client, onEdit }) {
     });
   }
 
+//   function handleFormEdit(e) {
+//     e.preventDefault();
+
+//     const editData = {...editData};
+//     fetch(`/clients/${client.id}`,{
+//         method: "PATCH",
+//         headers: {
+//             "Content-Type": "application/json"
+//         },
+//         body: JSON.stringify(editData),
+//     })
+//     .then((r) => {
+//         if (r.ok){
+//             r.json().then((newEdit) => {
+//                 handleEdit(newEdit)
+//                 setEditData({
+//                   name:"",
+//                   email:"",
+//                   phone_number:"",
+//                   address:"",
+//                 })
+//             })
+//         }else{
+//             r.json().then((err) => setErrors(err.errors));
+//         }
+//     });
+// }
+
   function handleFormEdit(e) {
     e.preventDefault();
     fetch(`/clients/${client.id}`, {
@@ -31,6 +61,7 @@ function EditRow({ client, onEdit }) {
     .then((r) => r.json()) 
     .then((newEdit)=>{
         handleEdit(newEdit);
+        navigate("/clients")
     })
 }
         // setEditData({
@@ -59,7 +90,7 @@ function EditRow({ client, onEdit }) {
           name="email"
           placeholder="Email"
           required="required"
-          value={editData.name}
+          value={editData.email}
           onChange={handleChange}
         />
       </td>
@@ -69,7 +100,7 @@ function EditRow({ client, onEdit }) {
           name="phone_number"
           placeholder="Phone Number"
           required="required"
-          value={editData.name}
+          value={editData.phone_number}
           onChange={handleChange}
         />
       </td>
@@ -79,7 +110,7 @@ function EditRow({ client, onEdit }) {
           name="address"
           placeholder="Address"
           required="required"
-          value={editData.name}
+          value={editData.address}
           onChange={handleChange}
         />
       </td>

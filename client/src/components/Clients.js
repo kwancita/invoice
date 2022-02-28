@@ -4,7 +4,7 @@ import { useState, Fragment } from "react";
 import Client from "./Client";
 import EditRow from "./EditRow";
 
-function Clients({ clients, setClients, onAdd }) {
+function Clients({ clients, setClients, onAdd, currentUser }) {
  
   // add function
   const [errors, setErrors] = useState([]);
@@ -60,11 +60,6 @@ function Clients({ clients, setClients, onAdd }) {
   //edit
   const [editID, setEditID] = useState(null);
 
-  function handleEditClick(e, client) {
-    e.preventDefault();
-    setEditID(client.id);
-  }
-
   function handleEditClients(updateClient) {
     const updateClients = clients.map((client) => {
       if (client.id === updateClient.id) {
@@ -75,15 +70,22 @@ function Clients({ clients, setClients, onAdd }) {
     });
     setClients(updateClients);
   }
+
+  function handleEditClick(e, client) {
+    e.preventDefault();
+    setEditID(client.id);
+  }
   //edit//
 
   return (
     <div>
-      <h1>Clients</h1>
+      <h1>Hello, {currentUser.name}</h1>
+      <h3>Clients</h3>
       <form>
         <table>
           <tbody>
             <tr>
+              {/* <th>ID</th> */}
               <th>Name</th>
               <th>Email</th>
               <th>Phone Number</th>
@@ -91,6 +93,9 @@ function Clients({ clients, setClients, onAdd }) {
               <th>Actions</th>
             </tr>
             <tr>
+               {/* <td>
+              leaver it empty
+              </td> */}
               <td>
                 <input
                   type="text"

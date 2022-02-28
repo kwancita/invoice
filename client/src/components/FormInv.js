@@ -1,8 +1,13 @@
 import { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom"
 
 function FormInv({onAdd}) {
+    const navigate = useNavigate()
+    const params = useParams()
+    const clientID = params.id
     const [errors, setErrors] = useState([]);
     const [formInv, setFromInv] = useState({
+        client_id: clientID,
         desc: "",
         due_date: "",
         price: ""
@@ -30,10 +35,12 @@ function FormInv({onAdd}) {
             r.json().then((invoice) => {
               onAdd(invoice);
               setFromInv({
+                client_id: "",
                 desc: "",
                 due_date: "",
                 price: ""
               });
+              navigate("/invoicers")
             });
           } else {
             r.json().then((err) => setErrors(err.errors));
@@ -66,6 +73,9 @@ function FormInv({onAdd}) {
                   value={formInv.price}
                   onChange={handleChange}
                 />
+                {errors.map((err) => (
+                  <li key={err}>{err}</li>
+                ))}
                 <button type="submit">Add new invoice</button>
             </form>
         </div>

@@ -38,7 +38,7 @@ function SignupForm({setCurrentUser}) {
             if (r.ok) {
                 r.json().then((user) => {
                     setCurrentUser(user);
-                    navigate("/home")
+                    navigate("/clients")
                     setFromData({
                         name:"",
                         email:"",
@@ -59,6 +59,8 @@ function SignupForm({setCurrentUser}) {
     return (
         <div>
             <form onSubmit={handleSubmit}>
+            <h1>logo</h1>
+            <Link to="/"><button>X</button></Link>
             <h2>Sign up here</h2>
                 <input 
                     className=""
@@ -137,7 +139,7 @@ function SignupForm({setCurrentUser}) {
                     <li className="ls-error" key={err}>{err}</li>
                 ))}
                 <button className="ls-button" type="submit">Signup</button>
-                <p>Already have an account? <Link to="/" className="ls-link">Login</Link></p>
+                <p>Already have an account? <Link to="/login" className="ls-link">Login</Link></p>
           </form>
         </div>
     )

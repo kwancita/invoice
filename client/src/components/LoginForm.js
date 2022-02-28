@@ -32,7 +32,7 @@ function LoginForm({setCurrentUser}) {
             if (r.ok) {
                 r.json().then((user) => {
                     setCurrentUser(user);
-                    navigate("/home")
+                    navigate("/clients")
                     setFromData({
                         username: "",
                         password: "",
@@ -46,6 +46,8 @@ function LoginForm({setCurrentUser}) {
     return (
         <div>
             <form className="ls-form" onSubmit={handleSubmit}>
+                <h1>logo</h1>
+                <Link to="/"><button>X</button></Link>
               <h2>Login here</h2>
                   <input 
                       className=""

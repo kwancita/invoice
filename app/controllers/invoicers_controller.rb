@@ -9,6 +9,7 @@ class InvoicersController < ApplicationController
     end
     
     def create
+        # byebug
         invoice = current_user.invoicers.create!(invoice_params)
         render json: invoice, status: :created
     end
