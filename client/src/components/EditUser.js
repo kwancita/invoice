@@ -3,7 +3,7 @@ import { useState } from "react"
 function EditUser({currentUser}) {
     const [errors, setErrors] = useState([])
     const [formData, setFromData] = useState({
-        solo: currentUser.logo,
+        logo: currentUser.logo,
         company: currentUser.company,
         name: currentUser.name,
         email: currentUser.email,

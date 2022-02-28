@@ -9,6 +9,8 @@ function DetailsInv({invoice, setInvoice, currentUser, onDeleteInvoice}) {
     const path = '/invoicers'
     const navigate = useNavigate();
 
+    console.log(invoice)
+
     useEffect(()=>{
         fetch(`/invoicers/${id}`)
         .then((r)=>r.json())
@@ -24,8 +26,6 @@ function DetailsInv({invoice, setInvoice, currentUser, onDeleteInvoice}) {
         onDeleteInvoice(id)
         navigate(`/clients/${id}`)
     }
-
-    console.log(invoice)
     
     const pdfExportComponent = useRef(null);
     const handleExportWithComponent = (event) => {

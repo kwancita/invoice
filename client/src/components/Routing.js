@@ -45,7 +45,7 @@ function Routing({currentUser}) {
                 <Route path="/clients" element={<Clients currentUser={currentUser} clients={clients} setClients={setClients} onAdd={handleAddClient} />} />
                 <Route path="/clients/:id" element={<DetailsClient client={client} setClient={setClient} />} />
                 {/* <Route path="/invoicers" element={<Invoices invoices={invoices} />} /> */}
-                <Route path="/clients/:id/invoicers/:id" element={<DetailsInv invoice={invoice} setInvoice={setInvoice} onDeleteInvoice={handleDeleteInvoice} currentUser={currentUser} />} />
+                <Route path="/clients/:id/invoicers/:invoice_id" element={<DetailsInv invoice={invoice} setInvoice={setInvoice} onDeleteInvoice={handleDeleteInvoice} currentUser={currentUser} />} />
                 <Route path="/me" element={<UserAccount currentUser={currentUser} />} />
                 <Route path="/clients/:id/invoicers/new" element={<FormInv onAdd={handleAddInvoice} /> } />
             </Routes>

@@ -81,11 +81,10 @@ function Clients({ clients, setClients, onAdd, currentUser }) {
     <div>
       <h1>Hello, {currentUser.name}</h1>
       <h3>Clients</h3>
-      <form>
+      {/* <form> */}
         <table>
           <tbody>
             <tr>
-              {/* <th>ID</th> */}
               <th>Name</th>
               <th>Email</th>
               <th>Phone Number</th>
@@ -93,9 +92,6 @@ function Clients({ clients, setClients, onAdd, currentUser }) {
               <th>Actions</th>
             </tr>
             <tr>
-               {/* <td>
-              leaver it empty
-              </td> */}
               <td>
                 <input
                   type="text"
@@ -163,7 +159,7 @@ function Clients({ clients, setClients, onAdd, currentUser }) {
             ))}
           </tbody>
         </table>
-      </form>
+      {/* </form> */}
     </div>
   );
 }

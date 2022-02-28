@@ -14,7 +14,6 @@ function Client({client,onClick, onDelete}) {
 
     return (
         <tr>
-            {/* <td>{id}</td> */}
             <td>{name}</td>
             <td>{email}</td>
             <td>{phone_number}</td>

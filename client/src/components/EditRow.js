@@ -61,7 +61,6 @@ function EditRow({ client, onEdit }) {
     .then((r) => r.json()) 
     .then((newEdit)=>{
         handleEdit(newEdit);
-        navigate("/clients")
     })
 }
         // setEditData({
@@ -73,6 +72,7 @@ function EditRow({ client, onEdit }) {
   
 
   return (
+    
     <tr>
       <td>
         <input
@@ -115,9 +115,11 @@ function EditRow({ client, onEdit }) {
         />
       </td>
       <td>
-        <button onClick={handleFormEdit}>Edit</button>
+        <button onClick={handleFormEdit}>Save</button>
+        {/* <button type="submit">Save</button> */}
       </td>
     </tr>
+  
   );
 }
 

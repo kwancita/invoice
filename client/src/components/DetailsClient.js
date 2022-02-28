@@ -2,12 +2,11 @@ import { Link, useParams } from 'react-router-dom'
 import { useEffect } from "react";
 
 function DetailsClient({client, setClient}) {
-    const {name, email, invoicers} = client
-    const {id} = useParams();
+    const {name, email, phone_number, address, invoicers} = client
+    const { id } = useParams();
     const path = '/clients'
-    const pathInv = `/clients/${id}/invoicers/${id}`
 
-    console.log(client.invoicers)
+    console.log(invoicers)
 
     useEffect(()=>{
         fetch(`/clients/${id}`)
@@ -22,6 +21,8 @@ function DetailsClient({client, setClient}) {
             <Link to={path}>go back</Link>
             <h1>this is {name} account</h1>
             <p>{email}</p>
+            <p>{phone_number}</p>
+            <p>{address}</p>
         <table>
           <tbody>
             <tr>
@@ -32,15 +33,21 @@ function DetailsClient({client, setClient}) {
                 <th>Action</th>
             </tr>
             
-            {invoicers.map((inv)=>(
+            {
+            invoicers ? 
+            (invoicers.map((inv)=>(
                 <tr>
                 <td>{inv.id}</td>
                 <td>{inv.due_date}</td>
                 <td>{inv.total}</td>
                 <td>{inv.status ? "Paid" : "Unpaid"}</td>
-                <td><Link to={pathInv} ><button>Detail</button></Link></td>
+                <td><Link to={`/clients/${id}/invoicers/${inv.id}`} ><button>Detail</button></Link></td>
                 </tr>
-            ))}
+            ))
+            ):(
+                null
+            )
+            }
            
           </tbody>
         </table>
