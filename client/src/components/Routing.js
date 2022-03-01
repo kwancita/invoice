@@ -4,11 +4,12 @@ import { Routes, Route } from "react-router-dom";
 import Clients from "./Clients";
 import DetailsClient from "./DetailsClient";
 import DetailsInv from "./DetailsInv";
+import EditUser from "./EditUser";
 import FormInv from "./FormInv";
 // import Invoices from "./Invoices";
 import UserAccount from "./UserAccount";
 
-function Routing({currentUser}) {
+function Routing({currentUser, setCurrentUser}) {
     const [clients, setClients] = useState([])
     const [client, setClient] = useState({})
     const [invoices, setInvoices] = useState([])
@@ -31,7 +32,7 @@ function Routing({currentUser}) {
     }
 
     function handleAddInvoice(newInvoice){
-        setInvoices([...invoice, newInvoice])
+        setInvoices([...invoices, newInvoice])
     }
 
     function handleDeleteInvoice(id) {
@@ -39,14 +40,25 @@ function Routing({currentUser}) {
         setInvoices(updateInvoices);
       }
 
+    function handleUpdate(updatedinv) {
+        const updatedInvs = invoices.map((inv) => {
+          if (inv.id === updatedinv.id) {
+            return updatedinv;
+          } else {
+            return inv;
+          }
+        });
+        setInvoices(updatedInvs);
+    }
+
     return (
         <div>
             <Routes>
-                <Route path="/clients" element={<Clients currentUser={currentUser} clients={clients} setClients={setClients} onAdd={handleAddClient} />} />
-                <Route path="/clients/:id" element={<DetailsClient client={client} setClient={setClient} />} />
-                {/* <Route path="/invoicers" element={<Invoices invoices={invoices} />} /> */}
-                <Route path="/clients/:id/invoicers/:invoice_id" element={<DetailsInv invoice={invoice} setInvoice={setInvoice} onDeleteInvoice={handleDeleteInvoice} currentUser={currentUser} />} />
-                <Route path="/me" element={<UserAccount currentUser={currentUser} />} />
+                <Route path="/clients" element={<Clients currentUser={currentUser} clients={clients} setClients={setClients} client={client} onAdd={handleAddClient} />} />
+                <Route path="/clients/:id" element={<DetailsClient client={client} setClient={setClient} onUpdate={handleUpdate} invoice={invoice} />} />
+                <Route path="/clients/:id/invoicers/:invoice_id" element={<DetailsInv invoice={invoice} setInvoice={setInvoice} onDeleteInvoice={handleDeleteInvoice} client={client} currentUser={currentUser} onUpdate={handleUpdate}/>} />
+                <Route path="/me" element={<UserAccount currentUser={currentUser} setCurrentUser={setCurrentUser}/>} />
+                <Route path="/account" element={<EditUser currentUser={currentUser} />} />
                 <Route path="/clients/:id/invoicers/new" element={<FormInv onAdd={handleAddInvoice} /> } />
             </Routes>
         </div>

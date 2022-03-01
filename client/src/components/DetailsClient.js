@@ -1,12 +1,11 @@
 import { Link, useParams } from 'react-router-dom'
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function DetailsClient({client, setClient}) {
     const {name, email, phone_number, address, invoicers} = client
     const { id } = useParams();
     const path = '/clients'
-
-    console.log(invoicers)
+    const pathNew = `/clients/${id}/invoicers/new`
 
     useEffect(()=>{
         fetch(`/clients/${id}`)
@@ -14,7 +13,7 @@ function DetailsClient({client, setClient}) {
         .then((cli)=>{
             setClient(cli);
         })
-    },[setClient, id])
+    },[id])
 
     return (
         <div>
@@ -23,6 +22,7 @@ function DetailsClient({client, setClient}) {
             <p>{email}</p>
             <p>{phone_number}</p>
             <p>{address}</p>
+            <Link to={pathNew}><button>New Invoice</button></Link>
         <table>
           <tbody>
             <tr>

@@ -5,7 +5,7 @@ function LoggedIn({currentUser, setCurrentUser}) {
     return (
         <div>
             <Navbar setCurrentUser={setCurrentUser}/>
-            <Routing currentUser={currentUser} />
+            <Routing currentUser={currentUser} setCurrentUser={setCurrentUser}/>
         </div>
     )
 }

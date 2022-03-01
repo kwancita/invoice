@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom"
 
-function EditRow({ client, onEdit }) {
+function EditRow({ client, onEdit, onCancel, setEditID }) {
   const navigate = useNavigate();
   const [editData, setEditData] = useState({
     name: client.name,
@@ -21,34 +21,6 @@ function EditRow({ client, onEdit }) {
     });
   }
 
-//   function handleFormEdit(e) {
-//     e.preventDefault();
-
-//     const editData = {...editData};
-//     fetch(`/clients/${client.id}`,{
-//         method: "PATCH",
-//         headers: {
-//             "Content-Type": "application/json"
-//         },
-//         body: JSON.stringify(editData),
-//     })
-//     .then((r) => {
-//         if (r.ok){
-//             r.json().then((newEdit) => {
-//                 handleEdit(newEdit)
-//                 setEditData({
-//                   name:"",
-//                   email:"",
-//                   phone_number:"",
-//                   address:"",
-//                 })
-//             })
-//         }else{
-//             r.json().then((err) => setErrors(err.errors));
-//         }
-//     });
-// }
-
   function handleFormEdit(e) {
     e.preventDefault();
     fetch(`/clients/${client.id}`, {
@@ -61,15 +33,9 @@ function EditRow({ client, onEdit }) {
     .then((r) => r.json()) 
     .then((newEdit)=>{
         handleEdit(newEdit);
+        setEditID(null)
     })
 }
-        // setEditData({
-        //     name: "",
-        //     email: "",
-        //     phone_number: "",
-        //     address: "",
-        // });
-  
 
   return (
     
@@ -116,7 +82,7 @@ function EditRow({ client, onEdit }) {
       </td>
       <td>
         <button onClick={handleFormEdit}>Save</button>
-        {/* <button type="submit">Save</button> */}
+        <button onClick={onCancel}>Cancel</button>
       </td>
     </tr>
   

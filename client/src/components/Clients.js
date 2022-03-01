@@ -75,6 +75,10 @@ function Clients({ clients, setClients, onAdd, currentUser }) {
     e.preventDefault();
     setEditID(client.id);
   }
+
+  const handleCancelClick = () => {
+    setEditID(null);
+  };
   //edit//
 
   return (
@@ -146,6 +150,8 @@ function Clients({ clients, setClients, onAdd, currentUser }) {
                     key={client.id}
                     client={client}
                     onEdit={handleEditClients}
+                    setEditID={setEditID}
+                    onCancel={handleCancelClick}
                   />
                 ) : (
                   <Client

@@ -1,10 +1,7 @@
-import { useState } from "react"
-import EditUser from "./EditUser"
-
+import { Link } from 'react-router-dom';
 
 function UserAccount({currentUser}) {
   const {name, email, phone_number, address, company, logo} = currentUser
-  const [edit, setEdit] = useState(false)
     return (
         <div>
             <img src={logo} alt="" />
@@ -13,8 +10,7 @@ function UserAccount({currentUser}) {
             <p>{name}</p>
             <p>{email}</p>
             <p>{phone_number}</p>
-            <button className="b-button" onClick={()=>{setEdit(true)}}>✏️</button>
-            {edit && <EditUser setEdit={setEdit} currentUser={currentUser} />}
+            <Link to="/account"><button>✏️</button></Link>
         </div>
     )
 }

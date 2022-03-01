@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom"
 
 function FormInv({onAdd}) {
     const navigate = useNavigate()
+    const { id } = useParams()
     const params = useParams()
     const clientID = params.id
     const [errors, setErrors] = useState([]);
@@ -40,7 +41,7 @@ function FormInv({onAdd}) {
                 due_date: "",
                 price: ""
               });
-              navigate("/invoicers")
+              navigate(`/clients/${id}`)
             });
           } else {
             r.json().then((err) => setErrors(err.errors));
