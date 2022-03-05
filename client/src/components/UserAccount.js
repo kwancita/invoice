@@ -1,18 +1,34 @@
-import { Link } from 'react-router-dom';
+import { useState } from "react";
+import EditUser from "./EditUser";
+import ShowAccount from "./ShowAccount";
 
-function UserAccount({currentUser}) {
-  const {name, email, phone_number, address, company, logo} = currentUser
-    return (
-        <div>
-            <img src={logo} alt="" />
-            <p>{company}</p>
-            <p>{address}</p>
-            <p>{name}</p>
-            <p>{email}</p>
-            <p>{phone_number}</p>
-            <Link to="/account"><button>✏️</button></Link>
-        </div>
-    )
+function UserAccount({ currentUser, setCurrentUser }) {
+  const [editUser, setEditUser] = useState(true);
+
+  function handleEditClick() {
+    setEditUser(!editUser);
+  }
+
+  function handleCancelClick() {
+    setEditUser(true);
+  }
+
+  return (
+    <div className="c-div">
+      {editUser ? (
+        <ShowAccount 
+         currentUser={currentUser} 
+         onClick={handleEditClick} />
+      ) : (
+        <EditUser
+          currentUser={currentUser}
+          setCurrentUser={setCurrentUser}
+          onCancel={handleCancelClick}
+          setEditUser={setEditUser}
+        />
+      )}
+    </div>
+  );
 }
 
-export default UserAccount
+export default UserAccount;

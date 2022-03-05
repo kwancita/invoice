@@ -1,0 +1,54 @@
+.d-add-btn{
+    border-style: none;
+    background-color: #556e69;
+    padding: 5px 15px;
+    border-radius: 2px;
+    color: white;
+}
+
+.d-div{
+    padding-left: 300px;
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    background: #d1e2de;
+    height: 100vh;
+}
+
+.d-info{
+    line-height: 200%;
+    margin-bottom: 40px;
+}
+
+.d-table{
+    border-collapse: collapse;
+    width: 500px;
+}
+
+.d-tr{
+    background: #556e69;
+    color: white;
+}
+.d-head-r{
+    padding:15px 0px;
+    width: 150px;
+}
+.d-head-date{
+    padding:15px 0px;
+    width: 200px;
+}
+
+.d-td{
+    padding:10px;
+    background: white;
+    text-align: center;
+}
+
+.d-btn{
+    border-style: none;
+    background-color: #556e69;
+    padding: 5px 15px;
+    border-radius: 2px;
+    color: white;
+    margin-right: 10px;
+}

@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 function Client({client,onClick, onDelete}) {
     const  {id,name, email, phone_number, address} = client
@@ -13,19 +16,19 @@ function Client({client,onClick, onDelete}) {
     }
 
     return (
-        <tr>
-            <td>{name}</td>
-            <td>{email}</td>
-            <td>{phone_number}</td>
-            <td>{address}</td>
-            <td>
-                <button onClick={(e)=> onClick(e, client)}>Edit</button> 
-                | 
-                <button onClick={handleDelete}>Delete</button>
-                |
-                <Link to={pathDe}><button>Details</button></Link>
+        <>
+        <tr className="c-tr">
+            <td className="c-td">{name}</td>
+            <td className="c-td">{email}</td>
+            <td className="c-td">{phone_number}</td>
+            <td className="c-td">{address}</td>
+            <td className="c-add">
+                <EditIcon onClick={(e)=> onClick(e, client)}/>|
+                <DeleteForeverIcon onClick={handleDelete}/>|
+                <Link to={pathDe}><ArrowForwardIcon /></Link>
             </td>
         </tr>
+        </>
     )
 }
 

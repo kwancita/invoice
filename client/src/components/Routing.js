@@ -6,7 +6,6 @@ import DetailsClient from "./DetailsClient";
 import DetailsInv from "./DetailsInv";
 import EditUser from "./EditUser";
 import FormInv from "./FormInv";
-// import Invoices from "./Invoices";
 import UserAccount from "./UserAccount";
 
 function Routing({currentUser, setCurrentUser}) {
@@ -14,6 +13,8 @@ function Routing({currentUser, setCurrentUser}) {
     const [client, setClient] = useState({})
     const [invoices, setInvoices] = useState([])
     const [invoice, setInvoice] = useState({})
+
+    console.log(invoices)
 
     useEffect(()=>{
         fetch("/clients")
@@ -40,7 +41,7 @@ function Routing({currentUser, setCurrentUser}) {
         setInvoices(updateInvoices);
       }
 
-    function handleUpdate(updatedinv) {
+    function handleUpdateInv(updatedinv) {
         const updatedInvs = invoices.map((inv) => {
           if (inv.id === updatedinv.id) {
             return updatedinv;
@@ -55,8 +56,8 @@ function Routing({currentUser, setCurrentUser}) {
         <div>
             <Routes>
                 <Route path="/clients" element={<Clients currentUser={currentUser} clients={clients} setClients={setClients} client={client} onAdd={handleAddClient} />} />
-                <Route path="/clients/:id" element={<DetailsClient client={client} setClient={setClient} onUpdate={handleUpdate} invoice={invoice} />} />
-                <Route path="/clients/:id/invoicers/:invoice_id" element={<DetailsInv invoice={invoice} setInvoice={setInvoice} onDeleteInvoice={handleDeleteInvoice} client={client} currentUser={currentUser} onUpdate={handleUpdate}/>} />
+                <Route path="/clients/:id" element={<DetailsClient client={client} setClient={setClient} onUpdate={handleUpdateInv} invoice={invoice} />} />
+                <Route path="/clients/:id/invoicers/:invoice_id" element={<DetailsInv invoice={invoice} setInvoice={setInvoice} onDeleteInvoice={handleDeleteInvoice} client={client} currentUser={currentUser} onUpdate={handleUpdateInv} setInvoices={setInvoices} />} />
                 <Route path="/me" element={<UserAccount currentUser={currentUser} setCurrentUser={setCurrentUser}/>} />
                 <Route path="/account" element={<EditUser currentUser={currentUser} />} />
                 <Route path="/clients/:id/invoicers/new" element={<FormInv onAdd={handleAddInvoice} /> } />

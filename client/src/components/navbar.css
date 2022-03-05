@@ -1,0 +1,48 @@
+.n-nav{
+    width: 230px;
+    height: 100%;
+    background: #556e69;
+    position: fixed;
+    top:0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+}
+
+.n-link{
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 40px;
+}
+
+.n-btn{
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+    padding-bottom: 20px;
+}
+
+.logo{
+    font-size: 26px;
+}
+
+.logoImg{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.icon{
+    padding-right: 10px;
+}
+
+.n-left{
+    float: left;
+}
+
+.n-right{
+    float: right;
+}
+

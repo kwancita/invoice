@@ -1,8 +1,9 @@
+import "./editClient.css"
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom"
+import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
+import SaveIcon from '@mui/icons-material/Save';
 
 function EditRow({ client, onEdit, onCancel, setEditID }) {
-  const navigate = useNavigate();
   const [editData, setEditData] = useState({
     name: client.name,
     email: client.email,
@@ -42,6 +43,7 @@ function EditRow({ client, onEdit, onCancel, setEditID }) {
     <tr>
       <td>
         <input
+          className="e-form"
           type="text"
           name="name"
           placeholder="Fullname"
@@ -52,6 +54,7 @@ function EditRow({ client, onEdit, onCancel, setEditID }) {
       </td>
       <td>
         <input
+          className="e-form"
           type="text"
           name="email"
           placeholder="Email"
@@ -62,6 +65,7 @@ function EditRow({ client, onEdit, onCancel, setEditID }) {
       </td>
       <td>
         <input
+          className="e-form"
           type="text"
           name="phone_number"
           placeholder="Phone Number"
@@ -72,6 +76,7 @@ function EditRow({ client, onEdit, onCancel, setEditID }) {
       </td>
       <td>
         <input
+          className="e-form"
           type="text"
           name="address"
           placeholder="Address"
@@ -80,9 +85,9 @@ function EditRow({ client, onEdit, onCancel, setEditID }) {
           onChange={handleChange}
         />
       </td>
-      <td>
-        <button onClick={handleFormEdit}>Save</button>
-        <button onClick={onCancel}>Cancel</button>
+      <td className="e-action">
+        <SaveIcon onClick={handleFormEdit}/>|
+        <KeyboardReturnIcon onClick={onCancel}/>
       </td>
     </tr>
   

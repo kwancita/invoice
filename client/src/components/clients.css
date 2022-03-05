@@ -1,0 +1,58 @@
+.c-div{
+    padding-left: 300px;
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    background: #d1e2de;
+    height: 100vh;
+}
+
+.c-h3{
+    padding-bottom: 30px;
+}
+
+.c-table{
+    border-collapse: collapse;
+}
+
+.c-tr{
+    background: white;
+}
+
+.c-head-r{
+    padding:15px 75px;
+}
+
+.c-form{
+    border: none;
+    background-color: #d1e2de;
+    border-bottom: 1px solid #556e69;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.c-add{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px
+}
+
+.c-add-btn{
+    border-style: none;
+    background-color: #556e69;
+    padding: 5px 15px;
+    border-radius: 2px;
+    color: white;
+}
+
+.c-td{
+    padding:10px;
+    background: white;
+}
+
+
+
+
+
+

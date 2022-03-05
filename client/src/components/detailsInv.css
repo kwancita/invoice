@@ -1,0 +1,64 @@
+.inv-div{
+    background: white;
+    width: 500px;
+    padding: 30px;
+}
+.inv-logo{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    color: white;
+}
+
+.inv-left{
+    float: left;
+}
+
+.inv-right{
+    float: right;
+}
+
+.inv-inv{
+    padding: 20px 0;
+}
+
+.inv-th{
+    border: none;
+    background-color: #556e69;
+    color: white;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.inv-td{
+    border: none;
+    background-color: #d1e2de;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.inv-table{
+    padding: 20px;
+}
+
+.inv-total{
+    display: flex;
+    padding-top: 20px;
+}
+
+.total-right{
+    padding-left: 20px;
+}
+
+.inv-btn-div{
+    padding: 20px 0;
+}
+
+.inv-btn{
+    border-style: none;
+    background-color: #556e69;
+    padding: 5px 15px;
+    border-radius: 2px;
+    color: white;
+    margin-right: 20px;
+}

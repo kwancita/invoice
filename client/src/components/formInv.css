@@ -1,0 +1,19 @@
+.f-h2{
+    padding-bottom: 20px;
+}
+
+.f-inv{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+.f-input{
+    border: none;
+    background-color: #d1e2de;
+    border-bottom: 1px solid #556e69;
+    padding: 10px;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+

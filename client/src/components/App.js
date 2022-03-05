@@ -29,7 +29,7 @@ function App() {
   }
 
   return (
-    <div className="">
+    <div className="app">
      <Router>
         {currentUser? (
           <LoggedIn

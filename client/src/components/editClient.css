@@ -1,0 +1,14 @@
+.e-form{
+    border: none;
+    background-color: #d1e2de;
+    border-bottom: 1px solid #556e69;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.e-action{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px
+}

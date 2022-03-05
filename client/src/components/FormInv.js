@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom"
+import { useParams, useNavigate, Link } from "react-router-dom"
+import "./formInv.css"
 
 function FormInv({onAdd}) {
     const navigate = useNavigate()
@@ -13,6 +14,7 @@ function FormInv({onAdd}) {
         due_date: "",
         price: ""
     });
+    const path = `/clients/${id}`
 
     function handleChange(e) {
         setFromInv({
@@ -51,9 +53,13 @@ function FormInv({onAdd}) {
     
 
     return (
-        <div>
+        <div className="c-div">
+            
             <form onSubmit={handleSubmit}>
+            <h2 className="f-h2">New Invoice</h2>
+            <div className="f-inv">
                 <input
+                  className="f-input"
                   type="text"
                   name="desc"
                   placeholder="Describtion"
@@ -61,6 +67,7 @@ function FormInv({onAdd}) {
                   onChange={handleChange}
                 />
                 <input
+                  className="f-input"
                   type="date"
                   name="due_date"
                   placeholder="Due Date"
@@ -68,16 +75,19 @@ function FormInv({onAdd}) {
                   onChange={handleChange}
                 />
                 <input
+                  className="f-input"
                   type="number"
                   name="price"
                   placeholder="Price"
                   value={formInv.price}
                   onChange={handleChange}
                 />
+                </div>
                 {errors.map((err) => (
                   <li key={err}>{err}</li>
                 ))}
-                <button type="submit">Add new invoice</button>
+                <button type="submit" className="d-btn">Add new invoice</button>
+                <Link to={path}><button className="d-btn">Cancel</button></Link>
             </form>
         </div>
     )

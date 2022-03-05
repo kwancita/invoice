@@ -1,8 +1,8 @@
 import { useState, Fragment } from "react";
-
-
+import "./clients.css"
 import Client from "./Client";
 import EditRow from "./EditRow";
+
 
 function Clients({ clients, setClients, onAdd, currentUser }) {
  
@@ -82,22 +82,22 @@ function Clients({ clients, setClients, onAdd, currentUser }) {
   //edit//
 
   return (
-    <div>
-      <h1>Hello, {currentUser.name}</h1>
-      <h3>Clients</h3>
-      {/* <form> */}
-        <table>
+    <div className="c-div">
+      <h3 className="c-h3">Clients</h3>
+      <div className="c">
+        <table className="c-table">
           <tbody>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Phone Number</th>
-              <th>Address</th>
-              <th>Actions</th>
+            <tr className="c-tr">
+              <th className="c-head-r">Name</th>
+              <th className="c-head-r">Email</th>
+              <th className="c-head-r">Phone Number</th>
+              <th className="c-head-r">Address</th>
+              <th className="c-head-r">Actions</th>
             </tr>
             <tr>
               <td>
                 <input
+                  className="c-form"
                   type="text"
                   name="name"
                   placeholder="Fullname"
@@ -107,6 +107,7 @@ function Clients({ clients, setClients, onAdd, currentUser }) {
               </td>
               <td>
                 <input
+                  className="c-form"
                   type="text"
                   name="email"
                   placeholder="Email"
@@ -116,6 +117,7 @@ function Clients({ clients, setClients, onAdd, currentUser }) {
               </td>
               <td>
                 <input
+                  className="c-form"
                   type="text"
                   name="phone_number"
                   placeholder="Phone Number"
@@ -125,6 +127,7 @@ function Clients({ clients, setClients, onAdd, currentUser }) {
               </td>
               <td>
                 <input
+                  className="c-form"
                   type="text"
                   name="address"
                   placeholder="Address"
@@ -132,13 +135,13 @@ function Clients({ clients, setClients, onAdd, currentUser }) {
                   onChange={handleChange}
                 />
               </td>
-              <td>
-                <button onClick={handleSubmit}>Add New Client</button>
+              <td className="c-add">
+                <button onClick={handleSubmit} className="c-add-btn">Add New Client</button>
               </td>
             </tr>
             <tr>
               {errors.map((err) => (
-                <td className="ls-error" key={err}>
+                <td key={err}>
                   {err}
                 </td>
               ))}
@@ -165,9 +168,13 @@ function Clients({ clients, setClients, onAdd, currentUser }) {
             ))}
           </tbody>
         </table>
-      {/* </form> */}
-    </div>
+        </div>
+    </div> 
   );
 }
 
 export default Clients;
+
+
+
+
